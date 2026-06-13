@@ -1,0 +1,16 @@
+.intro {
+  margin: 30px;
+  text-align: center;
+}
+
+.icon-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0 0px;
+}
+
+.icon-image {
+  width: global.$base;
+  height: global.$base;
+  border-radius: 20px;
+}
