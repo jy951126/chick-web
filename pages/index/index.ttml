@@ -1,4 +1,17 @@
-<view class="icon-wrapper">
-    <image class="icon-image" src="/icon.png"></image>
+<view class="page" bindtap="onPageTap">
+  <image class="bg-image" src="/背景.png" mode="aspectFill"></image>
+  <image
+    class="chicken {{chickenAnimating ? 'chicken--walk' : ''}}"
+    src="/主页的鸡.png"
+    mode="aspectFit"
+    bindanimationend="onChickenAnimationEnd"
+  ></image>
+  <image
+    class="bowl {{bowlVisible ? 'bowl--show' : ''}}"
+    src="/主页的鸡碗.png"
+    mode="aspectFit"
+  ></image>
+  <view class="content">
+    <view class="intro">2</view>
   </view>
-  <view class="intro">抖音小程序 sass 模板</view>
+</view>
