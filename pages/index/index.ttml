@@ -23,7 +23,13 @@
         class="egg {{eggAnimating ? 'egg--hatch' : ''}}"
         src="/蛋.png"
         mode="aspectFit"
+        bindanimationend="onEggAnimationEnd"
       ></image>
     </view>
+    <image
+      class="empty-bowl {{emptyBowlVisible ? 'empty-bowl--show' : ''}}"
+      src="/空碗.png"
+      mode="aspectFit"
+    ></image>
   </view>
 </view>

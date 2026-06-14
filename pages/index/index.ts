@@ -82,6 +82,7 @@ Page({
     bowlVisible: false,
     scene2Active: false,
     eggAnimating: false,
+    emptyBowlVisible: false,
   },
 
   autoSceneTimer: null as ReturnType<typeof setTimeout> | null,
@@ -129,6 +130,11 @@ Page({
     setTimeout(() => {
       this.setData({ eggAnimating: true })
     }, 300)
+  },
+
+  onEggAnimationEnd() {
+    if (this.data.emptyBowlVisible) return
+    this.setData({ emptyBowlVisible: true })
   },
 
   onPageTap() {

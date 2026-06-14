@@ -66,9 +66,9 @@
 .nest-group {
   position: fixed;
   z-index: 2;
-  width: 460rpx;
-  height: 287rpx;
-  top: 74%;
+  width: 360rpx;
+  height: 225rpx;  // 必须一起改
+  top: 73%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -85,27 +85,48 @@
 .egg {
   position: absolute;
   z-index: 3;
-  width: 300rpx;
-  height: 353rpx;
-  bottom: 6%;
+  width: 156rpx;
+  height: 184rpx;
+  bottom: 30%;
   left: 50%;
   opacity: 0;
-  transform: translateX(-50%) scale(0.08);
+  transform: translateX(-50%) translateY(36rpx) scale(0.04);
   transform-origin: center bottom;
   pointer-events: none;
 
   &--hatch {
-    opacity: 1;
-    animation: egg-hatch 1.8s ease-out forwards;
+    animation: egg-hatch 2s ease-out forwards;
   }
 }
 
 @keyframes egg-hatch {
   0% {
-    transform: translateX(-50%) scale(0.08);
+    opacity: 0;
+    transform: translateX(-50%) translateY(36rpx) scale(0.04);
+  }
+
+  12% {
+    opacity: 1;
   }
 
   100% {
-    transform: translateX(-50%) scale(1);
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+.empty-bowl {
+  position: fixed;
+  z-index: 3;
+  width: 200rpx;
+  height: 137rpx;
+  top: 82%;
+  left: 78%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+
+  &--show {
+    opacity: 1;
   }
 }
