@@ -1,4 +1,11 @@
 <view class="page" bindtap="onPageTap">
+  <image
+    class="bgm-toggle"
+    src="{{bgmMuted ? '/静音.png' : '/音乐.png'}}"
+    mode="aspectFit"
+    catchtap="onToggleBgm"
+  ></image>
+
   <view class="scene" hidden="{{scene2Active}}">
     <image class="bg-image" src="/背景.png" mode="aspectFill"></image>
     <image
@@ -20,15 +27,51 @@
     <view class="nest-group">
       <image class="nest" src="/窝.png" mode="aspectFit"></image>
       <image
-        class="egg {{eggAnimating ? 'egg--hatch' : ''}}"
+        class="egg {{eggAnimating ? 'egg--hatch' : ''}} {{fingerVisible ? 'egg--tap' : ''}}"
         src="/蛋.png"
         mode="aspectFit"
+        catchtap="onScene2EggTap"
         bindanimationend="onEggAnimationEnd"
+      ></image>
+      <image
+        class="finger {{fingerVisible ? 'finger--show finger--poke' : ''}}"
+        src="/手指.png"
+        mode="aspectFit"
+      ></image>
+    </view>
+    <view class="bowl-group" hidden="{{!emptyBowlVisible}}">
+      <image class="empty-bowl" src="/空碗.png" mode="aspectFit"></image>
+      <image
+        class="feed-in-bowl {{feedInBowlAnimating ? 'feed-in-bowl--grow' : ''}}"
+        src="/单独的料.png"
+        mode="aspectFit"
+        bindanimationend="onFeedInBowlAnimationEnd"
+      ></image>
+      <image
+        class="feed-wheat {{feedWheatVisible ? 'feed-wheat--show' : ''}} {{feedWheatTilting ? 'feed-wheat--tilt' : ''}}"
+        src="/饲料_小麦.png"
+        mode="aspectFit"
+        bindanimationend="onFeedWheatTiltEnd"
+      ></image>
+      <image
+        class="feed-weight {{feedWeightVisible ? 'feed-weight--show' : ''}}"
+        src="/50g.png"
+        mode="aspectFit"
       ></image>
     </view>
     <image
-      class="empty-bowl {{emptyBowlVisible ? 'empty-bowl--show' : ''}}"
-      src="/空碗.png"
+      class="action-btn action-checkin {{actionButtonsVisible ? 'action-btn--show' : ''}}"
+      src="/快速签到.png"
+      mode="aspectFit"
+    ></image>
+    <image
+      class="action-btn action-redeem {{actionButtonsVisible ? 'action-btn--show' : ''}}"
+      src="/兑换中心.png"
+      mode="aspectFit"
+    ></image>
+    <image
+      class="action-btn action-share {{actionButtonsVisible ? 'action-btn--show' : ''}}"
+      src="/分享好友.png"
       mode="aspectFit"
     ></image>
   </view>

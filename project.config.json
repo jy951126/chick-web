@@ -1,1 +1,19 @@
-{"setting":{"urlCheck":false,"es6":true,"postcss":true,"minified":true,"newFeature":true,"autoCompile":true,"compileHotReLoad":true,"nativeCompile":true,"useCompilerPlugins":["typescript","sass"]},"appid":"testAppId","projectname":"check-web","douyinProjectType":"native"}
+{
+    "setting": {
+        "urlCheck": false,
+        "es6": true,
+        "postcss": true,
+        "minified": true,
+        "newFeature": true,
+        "autoCompile": true,
+        "compileHotReLoad": true,
+        "nativeCompile": true,
+        "useCompilerPlugins": [
+            "typescript",
+            "sass"
+        ]
+    },
+    "appid": "ttf22f84926c4b351301",
+    "projectname": "check-web",
+    "douyinProjectType": "native"
+}
