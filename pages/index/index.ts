@@ -1,6 +1,7 @@
 import { getBgmUrl } from '../../config/audio'
 
 const BGM_CACHE_KEY = 'bgm_file_path'
+const AUTO_SCENE2_DELAY = 3000
 
 let bgAudio: ReturnType<typeof tt.createInnerAudioContext> | null = null
 
@@ -79,23 +80,57 @@ Page({
   data: {
     chickenAnimating: false,
     bowlVisible: false,
+    scene2Active: false,
+    eggAnimating: false,
   },
+
+  autoSceneTimer: null as ReturnType<typeof setTimeout> | null,
+  transitioned: false,
+
   onLoad() {
     initBgAudio()
   },
+
   onShow() {
     if (bgAudio?.paused) {
       bgAudio.play()
     }
   },
+
   onReady() {
     setTimeout(() => {
       this.setData({ chickenAnimating: true })
     }, 300)
   },
+
   onChickenAnimationEnd() {
     this.setData({ bowlVisible: true })
+
+    this.autoSceneTimer = setTimeout(() => {
+      this.goToScene2()
+    }, AUTO_SCENE2_DELAY)
   },
+
+  onChickenTap() {
+    this.goToScene2()
+  },
+
+  goToScene2() {
+    if (this.transitioned) return
+    this.transitioned = true
+
+    if (this.autoSceneTimer) {
+      clearTimeout(this.autoSceneTimer)
+      this.autoSceneTimer = null
+    }
+
+    this.setData({ scene2Active: true })
+
+    setTimeout(() => {
+      this.setData({ eggAnimating: true })
+    }, 300)
+  },
+
   onPageTap() {
     if (bgAudio?.paused) {
       bgAudio.play()
@@ -103,7 +138,12 @@ Page({
       initBgAudio()
     }
   },
+
   onUnload() {
+    if (this.autoSceneTimer) {
+      clearTimeout(this.autoSceneTimer)
+      this.autoSceneTimer = null
+    }
     destroyBgAudio()
   },
 })

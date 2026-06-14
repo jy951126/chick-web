@@ -1,17 +1,29 @@
 <view class="page" bindtap="onPageTap">
-  <image class="bg-image" src="/背景.png" mode="aspectFill"></image>
-  <image
-    class="chicken {{chickenAnimating ? 'chicken--walk' : ''}}"
-    src="/主页的鸡.png"
-    mode="aspectFit"
-    bindanimationend="onChickenAnimationEnd"
-  ></image>
-  <image
-    class="bowl {{bowlVisible ? 'bowl--show' : ''}}"
-    src="/主页的鸡碗.png"
-    mode="aspectFit"
-  ></image>
-  <view class="content">
-    <view class="intro">2</view>
+  <view class="scene" hidden="{{scene2Active}}">
+    <image class="bg-image" src="/背景.png" mode="aspectFill"></image>
+    <image
+      class="chicken {{chickenAnimating ? 'chicken--walk' : ''}}"
+      src="/主页的鸡.png"
+      mode="aspectFit"
+      catchtap="onChickenTap"
+      bindanimationend="onChickenAnimationEnd"
+    ></image>
+    <image
+      class="bowl {{bowlVisible ? 'bowl--show' : ''}}"
+      src="/主页的鸡碗.png"
+      mode="aspectFit"
+    ></image>
+  </view>
+
+  <view class="scene" hidden="{{!scene2Active}}">
+    <image class="bg-image" src="/第二张背景.png" mode="aspectFill"></image>
+    <view class="nest-group">
+      <image class="nest" src="/窝.png" mode="aspectFit"></image>
+      <image
+        class="egg {{eggAnimating ? 'egg--hatch' : ''}}"
+        src="/蛋.png"
+        mode="aspectFit"
+      ></image>
+    </view>
   </view>
 </view>
