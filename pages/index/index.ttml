@@ -27,15 +27,68 @@
     <view class="nest-group">
       <image class="nest" src="/窝.png" mode="aspectFit"></image>
       <image
-        class="egg {{eggAnimating ? 'egg--hatch' : ''}} {{fingerVisible ? 'egg--tap' : ''}}"
+        class="egg-intact {{eggAnimating ? 'egg-intact--hatch' : ''}} {{eggSettled ? 'egg-intact--settled' : ''}} {{eggShaking ? 'egg-intact--shake' : ''}}"
         src="/蛋.png"
         mode="aspectFit"
-        catchtap="onScene2EggTap"
+        hidden="{{eggCracked}}"
         bindanimationend="onEggAnimationEnd"
       ></image>
       <image
-        class="finger {{fingerVisible ? 'finger--show finger--poke' : ''}}"
+        class="egg-crack"
+        src="/裂缝.png"
+        mode="aspectFit"
+        hidden="{{!eggCracked}}"
+      ></image>
+      <image
+        class="hatch-progress hatch-progress--50"
+        src="/百分之五十进度条.png"
+        mode="aspectFit"
+        hidden="{{!hatchProgress50Visible}}"
+      ></image>
+      <image
+        class="hatch-progress hatch-progress--100"
+        src="/百分百进度条.png"
+        mode="aspectFill"
+        hidden="{{!hatchProgress100Visible}}"
+      ></image>
+      <video
+        tt:if="{{hatchVideoVisible && hatchVideoSrc}}"
+        id="hatchVideo"
+        class="hatch-video"
+        src="{{hatchVideoSrc}}"
+        autoplay="{{true}}"
+        loop="{{false}}"
+        controls="{{false}}"
+        show-center-play-btn="{{false}}"
+        show-play-btn="{{false}}"
+        show-fullscreen-btn="{{false}}"
+        enable-progress-gesture="{{false}}"
+        object-fit="contain"
+        bindloadedmetadata="onHatchVideoLoaded"
+        binderror="onHatchVideoError"
+      ></video>
+      <image
+        class="feed-bag {{bagVisible ? 'feed-bag--show' : ''}} {{bagTilting ? 'feed-bag--tilt' : ''}} {{bagTilted ? 'feed-bag--tilted' : ''}}"
+        src="/袋子.png"
+        mode="aspectFit"
+        catchtap="onBagTap"
+        bindanimationend="onBagTiltEnd"
+      ></image>
+      <image
+        class="finger finger-egg {{fingerEggVisible ? 'finger--show finger--poke' : ''}}"
         src="/手指.png"
+        mode="aspectFit"
+        catchtap="onFingerEggTap"
+      ></image>
+      <image
+        class="finger finger-bag {{fingerBagVisible ? 'finger--show finger--poke' : ''}}"
+        src="/手指.png"
+        mode="aspectFit"
+        catchtap="onBagTap"
+      ></image>
+      <image
+        class="feed-scattered {{feedScatteredVisible ? 'feed-scattered--show' : ''}}"
+        src="/零碎饲料.png"
         mode="aspectFit"
       ></image>
     </view>
